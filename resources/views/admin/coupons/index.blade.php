@@ -7,7 +7,7 @@
                 <div class="text-lg font-semibold">Coupons</div>
                 <div class="text-sm text-slate-600">Discount codes.</div>
             </div>
-            <a href="{{ route('admin.coupons.create') }}" class="inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+            <a href="{{ route('admin.coupons.create') }}" class="inline-flex items-center justify-center rounded-xl bg-slate-500 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-600">
                 + New Coupon
             </a>
         </div>

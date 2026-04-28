@@ -5,7 +5,7 @@
             <p class="mt-1 text-sm text-slate-600">Welcome back, {{ $user?->name }}.</p>
         </div>
         <div class="flex flex-wrap gap-2">
-            <a class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800" href="{{ route('admin.bookings.create') }}">
+            <a class="rounded-xl bg-slate-500 px-4 py-2 text-sm font-medium text-white hover:bg-slate-600" href="{{ route('admin.bookings.create') }}">
                 + New Booking
             </a>
         </div>
@@ -152,7 +152,7 @@
                             $isToday = $isInMonth && $dayNumber === (int) $today->day;
                         @endphp
 
-                        <div class="rounded-lg px-2 py-1 {{ $isToday ? 'bg-slate-900 text-white' : ($isInMonth ? 'bg-white text-slate-700' : 'bg-transparent text-slate-400') }}">
+                        <div class="rounded-lg px-2 py-1 {{ $isToday ? 'bg-slate-500 text-white' : ($isInMonth ? 'bg-white text-slate-700' : 'bg-transparent text-slate-400') }}">
                             {{ $isInMonth ? $dayNumber : '' }}
                         </div>
                     @endfor

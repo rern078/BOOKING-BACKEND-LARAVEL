@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title }}</title>
+    <style>[x-cloak]{display:none!important}</style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -69,7 +70,7 @@
             <div class="mx-auto flex min-h-screen max-w-6xl items-center justify-center px-4 py-12">
                 <div class="w-full">
                     <div class="mx-auto mb-8 flex max-w-md items-center justify-center gap-2 text-slate-900">
-                        <div class="grid h-9 w-9 place-items-center rounded-xl bg-slate-900 text-white">
+                        <div class="grid h-9 w-9 place-items-center rounded-xl bg-slate-500 text-white">
                             <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true">
                                 <path d="M7 7h10M7 12h10M7 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                             </svg>
@@ -86,7 +87,7 @@
             <div
                 x-show="sidebarOpen"
                 x-transition.opacity
-                class="fixed inset-0 z-40 bg-slate-900/40 lg:hidden"
+                class="fixed inset-0 z-40 bg-slate-500/40 lg:hidden"
                 @click="sidebarOpen = false"
                 aria-hidden="true"
             ></div>
@@ -98,7 +99,7 @@
             >
                 <div class="flex h-16 items-center justify-between border-b px-5">
                     <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2">
-                        <div class="grid h-9 w-9 place-items-center rounded-xl bg-slate-900 text-white">
+                        <div class="grid h-9 w-9 place-items-center rounded-xl bg-slate-500 text-white">
                             <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true">
                                 <path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                             </svg>
@@ -132,7 +133,7 @@
                                         <button
                                             type="button"
                                             class="w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2 text-sm transition
-                                                {{ $active ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100' }}"
+                                                {{ $active ? 'bg-slate-500 text-white' : 'text-slate-700 hover:bg-slate-100' }}"
                                             @click="open = !open"
                                         >
                                             <span class="flex items-center gap-3">
@@ -154,7 +155,7 @@
                                                 <a
                                                     href="{{ $child['href'] }}"
                                                     class="block rounded-xl px-3 py-2 text-sm transition
-                                                        {{ $childActive ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100' }}"
+                                                        {{ $childActive ? 'bg-slate-500 text-white' : 'text-slate-700 hover:bg-slate-100' }}"
                                                 >
                                                     {{ $child['label'] }}
                                                 </a>
@@ -165,7 +166,7 @@
                                     <a
                                         href="{{ $item['href'] }}"
                                         class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition
-                                            {{ $active ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100' }}"
+                                            {{ $active ? 'bg-slate-500 text-white' : 'text-slate-700 hover:bg-slate-100' }}"
                                     >
                                         <span class="grid h-8 w-8 place-items-center rounded-lg {{ $active ? 'bg-white/10' : 'bg-slate-100' }}">
                                             @php($heroName = $hero((string)($item['icon'] ?? '')))
@@ -181,7 +182,7 @@
 
                 <div class="absolute bottom-0 left-0 right-0 border-t bg-white p-4">
                     <div class="flex items-center gap-3">
-                        <div class="grid h-10 w-10 place-items-center rounded-full bg-slate-900 text-white">
+                        <div class="grid h-10 w-10 place-items-center rounded-full bg-slate-500 text-white">
                             <span class="text-sm font-semibold">{{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}</span>
                         </div>
                         <div class="min-w-0">
@@ -241,7 +242,7 @@
                                     type="button"
                                     @click="profileOpen = !profileOpen"
                                 >
-                                    <div class="grid h-9 w-9 place-items-center rounded-full bg-slate-900 text-white">
+                                    <div class="grid h-9 w-9 place-items-center rounded-full bg-slate-500 text-white">
                                         <span class="text-sm font-semibold">{{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}</span>
                                     </div>
                                     <div class="hidden text-left sm:block">

@@ -17,6 +17,7 @@ class Property extends Model
         'name',
         'slug',
         'description',
+        'image_path',
         'email',
         'phone',
         'address_line1',
@@ -45,6 +46,11 @@ class Property extends Model
     public function roomTypes(): HasMany
     {
         return $this->hasMany(RoomType::class);
+    }
+
+    public function gallery(): HasMany
+    {
+        return $this->hasMany(PropertyImage::class)->orderBy('sort_order')->orderBy('id');
     }
 }
 

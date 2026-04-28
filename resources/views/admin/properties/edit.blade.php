@@ -12,7 +12,7 @@
             </a>
         </div>
 
-        <form class="mt-6" method="POST" action="{{ route('admin.properties.update', $property) }}">
+        <form class="mt-6" method="POST" action="{{ route('admin.properties.update', $property) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -22,7 +22,7 @@
                 <a href="{{ route('admin.properties.index') }}" class="rounded-xl border bg-white px-4 py-2 text-sm font-semibold hover:bg-slate-50">
                     Cancel
                 </a>
-                <button class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800" type="submit">
+                <button class="rounded-xl bg-slate-500 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-600" type="submit">
                     Save changes
                 </button>
             </div>

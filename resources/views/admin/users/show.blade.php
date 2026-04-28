@@ -18,7 +18,7 @@
                     <div class="text-xl font-bold">{{ $user->name }}</div>
                     <div class="mt-1 text-sm text-slate-600">{{ $user->email }}</div>
                 </div>
-                <div class="grid h-12 w-12 place-items-center rounded-2xl bg-slate-900 text-white">
+                <div class="grid h-12 w-12 place-items-center rounded-2xl bg-slate-500 text-white">
                     <span class="text-lg font-semibold">{{ strtoupper(substr($user->name ?? 'U', 0, 1)) }}</span>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                         <option value="admin" @selected($currentRole === 'admin')>admin</option>
                     </select>
 
-                    <button class="inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800" type="submit">
+                    <button class="inline-flex items-center justify-center rounded-xl bg-slate-500 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-600" type="submit">
                         Save
                     </button>
                 </form>

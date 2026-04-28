@@ -39,7 +39,7 @@
                             @if ($avatarUrl)
                                 <img src="{{ $avatarUrl }}" alt="Avatar" class="h-16 w-16 rounded-full object-cover ring-2 ring-slate-200">
                             @else
-                                <div class="grid h-16 w-16 place-items-center rounded-full bg-slate-900 text-white ring-2 ring-slate-200">
+                                <div class="grid h-16 w-16 place-items-center rounded-full bg-slate-500 text-white ring-2 ring-slate-200">
                                     <span class="text-lg font-semibold">{{ $initial }}</span>
                                 </div>
                             @endif
@@ -208,7 +208,7 @@
                 <a href="{{ route('admin.dashboard') }}" class="rounded-xl border bg-white px-4 py-2 text-sm font-medium hover:bg-slate-50">
                     Cancel
                 </a>
-                <button class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800" type="submit">
+                <button class="rounded-xl bg-slate-500 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-600" type="submit">
                     Save Change
                 </button>
             </div>

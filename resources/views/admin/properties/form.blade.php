@@ -57,6 +57,58 @@
                placeholder="UTC">
     </div>
 
+    <div class="lg:col-span-12 rounded-xl border border-slate-200 bg-slate-50/80 p-4">
+        <div class="text-sm font-semibold text-slate-900">Main image</div>
+        <p class="mt-1 text-xs text-slate-600">Cover photo used in listings (optional).</p>
+        @if ($isEdit && $property->image_path)
+            <div class="mt-3 flex flex-wrap items-end gap-4">
+                <img src="{{ \Illuminate\Support\Facades\Storage::url($property->image_path) }}" alt="" class="h-6 w-auto rounded-lg border border-slate-200 object-cover shadow-sm">
+                <label class="inline-flex items-center gap-2 text-sm text-slate-700">
+                    <input type="checkbox" name="remove_image" value="1" class="rounded border" {{ old('remove_image') ? 'checked' : '' }}>
+                    Remove current image
+                </label>
+            </div>
+        @endif
+        <div class="mt-3">
+            <input type="file" name="image" accept="image/*"
+                   class="block w-full text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-slate-500 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-slate-600">
+        </div>
+        @error('image')
+            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div class="lg:col-span-12 rounded-xl border border-slate-200 bg-slate-50/80 p-4">
+        <div class="text-sm font-semibold text-slate-900">Gallery</div>
+        <p class="mt-1 text-xs text-slate-600">Add multiple photos. You can upload several files at once.</p>
+        @if ($isEdit && $property->gallery->isNotEmpty())
+            <div class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                @foreach ($property->gallery as $img)
+                    <label class="flex gap-3 rounded-lg border border-slate-200 bg-white p-2 shadow-sm">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($img->path) }}" alt="" class="h-6 w-auto shrink-0 rounded-md object-cover">
+                        <span class="flex min-w-0 flex-1 flex-col justify-center text-sm">
+                            <span class="truncate text-slate-700">{{ basename($img->path) }}</span>
+                            <span class="mt-1 inline-flex items-center gap-2">
+                                <input type="checkbox" name="remove_gallery[]" value="{{ $img->id }}" class="rounded border">
+                                <span class="text-xs text-red-700">Remove</span>
+                            </span>
+                        </span>
+                    </label>
+                @endforeach
+            </div>
+        @endif
+        <div class="mt-3">
+            <input type="file" name="gallery[]" multiple accept="image/*"
+                   class="block w-full text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-white file:px-4 file:py-2 file:text-sm file:font-semibold file:text-slate-900 file:ring-1 file:ring-slate-200 hover:file:bg-slate-50">
+        </div>
+        @error('gallery')
+            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+        @enderror
+        @error('gallery.*')
+            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+        @enderror
+    </div>
+
     <div class="lg:col-span-12">
         <label class="inline-flex items-center gap-2 text-sm">
             <input type="checkbox" class="rounded border"

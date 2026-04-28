@@ -7,7 +7,7 @@
                 <div class="text-lg font-semibold">Room Type Rates</div>
                 <div class="text-sm text-slate-600">Date-range pricing for room types.</div>
             </div>
-            <a href="{{ route('admin.room-type-rates.create') }}" class="inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+            <a href="{{ route('admin.room-type-rates.create') }}" class="inline-flex items-center justify-center rounded-xl bg-slate-500 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-600">
                 + New Rate
             </a>
         </div>
