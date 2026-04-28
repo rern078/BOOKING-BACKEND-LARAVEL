@@ -29,6 +29,11 @@ class Property extends Model
         'latitude',
         'longitude',
         'timezone',
+        'check_in_time',
+        'check_out_time',
+        'default_currency',
+        'tax_rate',
+        'cancellation_policy',
         'is_active',
     ];
 
@@ -36,6 +41,7 @@ class Property extends Model
         'is_active' => 'boolean',
         'latitude' => 'decimal:7',
         'longitude' => 'decimal:7',
+        'tax_rate' => 'decimal:2',
     ];
 
     public function owner(): BelongsTo
@@ -51,6 +57,11 @@ class Property extends Model
     public function gallery(): HasMany
     {
         return $this->hasMany(PropertyImage::class)->orderBy('sort_order')->orderBy('id');
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class)->latest();
     }
 }
 

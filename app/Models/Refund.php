@@ -5,39 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Payment extends Model
+class Refund extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'booking_id',
-        'provider',
-        'method',
-        'status',
+        'payment_id',
         'currency',
         'amount',
-        'transaction_reference',
+        'status',
+        'reference',
         'meta',
-        'paid_at',
+        'refunded_at',
     ];
 
     protected $casts = [
         'amount' => 'decimal:2',
         'meta' => 'array',
-        'paid_at' => 'datetime',
+        'refunded_at' => 'datetime',
     ];
 
-    public function booking(): BelongsTo
+    public function payment(): BelongsTo
     {
-        return $this->belongsTo(Booking::class);
-    }
-
-    public function refunds(): HasMany
-    {
-        return $this->hasMany(Refund::class);
+        return $this->belongsTo(Payment::class);
     }
 }
-

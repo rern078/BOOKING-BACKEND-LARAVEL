@@ -36,6 +36,11 @@ class AdminPropertyController extends Controller
             'city' => ['nullable', 'string', 'max:255'],
             'country_code' => ['nullable', 'string', 'size:2'],
             'timezone' => ['nullable', 'string', 'max:64'],
+            'check_in_time' => ['nullable', 'date_format:H:i'],
+            'check_out_time' => ['nullable', 'date_format:H:i'],
+            'default_currency' => ['nullable', 'string', 'size:3'],
+            'tax_rate' => ['nullable', 'numeric', 'min:0', 'max:99.99'],
+            'cancellation_policy' => ['nullable', 'string'],
             'is_active' => ['nullable', 'boolean'],
             'image' => ['nullable', 'image', 'max:5120'],
             'gallery' => ['nullable', 'array'],
@@ -44,6 +49,7 @@ class AdminPropertyController extends Controller
 
         $data['slug'] = $data['slug'] ?: Str::slug($data['name']).'-'.Str::random(6);
         $data['timezone'] = $data['timezone'] ?: 'UTC';
+        $data['default_currency'] = strtoupper((string) ($data['default_currency'] ?? 'USD'));
         $data['is_active'] = (bool) ($data['is_active'] ?? true);
 
         unset($data['image'], $data['gallery']);
@@ -74,6 +80,11 @@ class AdminPropertyController extends Controller
             'city' => ['nullable', 'string', 'max:255'],
             'country_code' => ['nullable', 'string', 'size:2'],
             'timezone' => ['nullable', 'string', 'max:64'],
+            'check_in_time' => ['nullable', 'date_format:H:i'],
+            'check_out_time' => ['nullable', 'date_format:H:i'],
+            'default_currency' => ['nullable', 'string', 'size:3'],
+            'tax_rate' => ['nullable', 'numeric', 'min:0', 'max:99.99'],
+            'cancellation_policy' => ['nullable', 'string'],
             'is_active' => ['nullable', 'boolean'],
             'image' => ['nullable', 'image', 'max:5120'],
             'remove_image' => ['nullable', 'boolean'],
@@ -84,6 +95,7 @@ class AdminPropertyController extends Controller
         ]);
 
         $data['is_active'] = (bool) ($data['is_active'] ?? false);
+        $data['default_currency'] = strtoupper((string) ($data['default_currency'] ?? $property->default_currency ?? 'USD'));
 
         unset($data['image'], $data['gallery'], $data['remove_image'], $data['remove_gallery']);
 

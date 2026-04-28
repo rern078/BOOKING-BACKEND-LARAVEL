@@ -57,6 +57,43 @@
                placeholder="UTC">
     </div>
 
+    <div class="lg:col-span-4">
+        <label class="text-sm font-medium">Check-in time</label>
+        <input class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus:border-indigo-400 focus:outline-none focus:ring-4 focus:ring-indigo-100"
+               name="check_in_time" type="time"
+               value="{{ old('check_in_time', $property->check_in_time ?? '') }}">
+    </div>
+
+    <div class="lg:col-span-4">
+        <label class="text-sm font-medium">Check-out time</label>
+        <input class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus:border-indigo-400 focus:outline-none focus:ring-4 focus:ring-indigo-100"
+               name="check_out_time" type="time"
+               value="{{ old('check_out_time', $property->check_out_time ?? '') }}">
+    </div>
+
+    <div class="lg:col-span-4">
+        <label class="text-sm font-medium">Default currency (ISO)</label>
+        <input class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus:border-indigo-400 focus:outline-none focus:ring-4 focus:ring-indigo-100"
+               name="default_currency" maxlength="3"
+               value="{{ old('default_currency', $property->default_currency ?? 'USD') }}"
+               placeholder="USD">
+    </div>
+
+    <div class="lg:col-span-4">
+        <label class="text-sm font-medium">Tax rate (%)</label>
+        <input class="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus:border-indigo-400 focus:outline-none focus:ring-4 focus:ring-indigo-100"
+               name="tax_rate" inputmode="decimal"
+               value="{{ old('tax_rate', $property->tax_rate ?? '') }}"
+               placeholder="10.00">
+    </div>
+
+    <div class="lg:col-span-12">
+        <label class="text-sm font-medium">Cancellation policy</label>
+        <textarea class="mt-1 min-h-[90px] w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus:border-indigo-400 focus:outline-none focus:ring-4 focus:ring-indigo-100"
+                  name="cancellation_policy"
+                  placeholder="Example: Free cancellation up to 24 hours before check-in.">{{ old('cancellation_policy', $property->cancellation_policy ?? '') }}</textarea>
+    </div>
+
     <div class="lg:col-span-12 rounded-xl border border-slate-200 bg-slate-50/80 p-4">
         <div class="text-sm font-semibold text-slate-900">Main image</div>
         <p class="mt-1 text-xs text-slate-600">Cover photo used in listings (optional).</p>

@@ -17,17 +17,46 @@
     @php
         $nav = [
             ['label' => 'Dashboard', 'href' => route('admin.dashboard'), 'active' => request()->routeIs('admin.dashboard'), 'icon' => 'dashboard'],
-            ['label' => 'Bookings', 'href' => route('admin.bookings.index'), 'active' => request()->routeIs('admin.bookings.*'), 'icon' => 'calendar'],
             [
-                'label' => 'Invoices & Coupons',
+                'label' => 'Bookings',
                 'href' => '#',
-                'active' => request()->routeIs('admin.invoices.*') || request()->routeIs('admin.coupons.*') || request()->routeIs('admin.booking-coupons.*') || request()->routeIs('admin.booking-guests.*'),
+                'active' => request()->routeIs('admin.bookings.*') || request()->routeIs('admin.booking-coupons.*') || request()->routeIs('admin.booking-guests.*'),
+                'icon' => 'calendar',
+                'children' => [
+                    ['label' => 'All bookings', 'href' => route('admin.bookings.index'), 'active' => request()->routeIs('admin.bookings.*')],
+                    ['label' => 'Booking guests', 'href' => route('admin.booking-guests.index'), 'active' => request()->routeIs('admin.booking-guests.*')],
+                    ['label' => 'Booking coupons', 'href' => route('admin.booking-coupons.index'), 'active' => request()->routeIs('admin.booking-coupons.*')],
+                ],
+            ],
+            [
+                'label' => 'Billing',
+                'href' => '#',
+                'active' => request()->routeIs('admin.payments.*') || request()->routeIs('admin.invoices.*') || request()->routeIs('admin.refunds.*'),
+                'icon' => 'credit-card',
+                'children' => [
+                    ['label' => 'Payments', 'href' => route('admin.payments.index'), 'active' => request()->routeIs('admin.payments.*')],
+                    ['label' => 'Invoices', 'href' => route('admin.invoices.index'), 'active' => request()->routeIs('admin.invoices.*')],
+                    ['label' => 'Refunds', 'href' => route('admin.refunds.index'), 'active' => request()->routeIs('admin.refunds.*')],
+                ],
+            ],
+            [
+                'label' => 'Marketing',
+                'href' => '#',
+                'active' => request()->routeIs('admin.coupons.*'),
                 'icon' => 'layers',
                 'children' => [
-                    ['label' => 'Invoices', 'href' => route('admin.invoices.index'), 'active' => request()->routeIs('admin.invoices.*')],
                     ['label' => 'Coupons', 'href' => route('admin.coupons.index'), 'active' => request()->routeIs('admin.coupons.*')],
-                    ['label' => 'Booking coupons', 'href' => route('admin.booking-coupons.index'), 'active' => request()->routeIs('admin.booking-coupons.*')],
-                    ['label' => 'Booking guests', 'href' => route('admin.booking-guests.index'), 'active' => request()->routeIs('admin.booking-guests.*')],
+                ],
+            ],
+            ['label' => 'Reviews', 'href' => route('admin.reviews.index'), 'active' => request()->routeIs('admin.reviews.*'), 'icon' => 'layers'],
+            [
+                'label' => 'System',
+                'href' => '#',
+                'active' => request()->routeIs('admin.jobs.*') || request()->routeIs('admin.job-batches.*'),
+                'icon' => 'layers',
+                'children' => [
+                    ['label' => 'Jobs', 'href' => route('admin.jobs.index'), 'active' => request()->routeIs('admin.jobs.*')],
+                    ['label' => 'Job batches', 'href' => route('admin.job-batches.index'), 'active' => request()->routeIs('admin.job-batches.*')],
                 ],
             ],
             ['label' => 'Users', 'href' => route('admin.users.index'), 'active' => request()->routeIs('admin.users.*'), 'icon' => 'users'],
@@ -46,7 +75,6 @@
                     ['label' => 'Room type amenities', 'href' => route('admin.room-type-amenities.index'), 'active' => request()->routeIs('admin.room-type-amenities.*')],
                 ],
             ],
-            ['label' => 'Payments', 'href' => route('admin.payments.index'), 'active' => request()->routeIs('admin.payments.*'), 'icon' => 'credit-card'],
             ['label' => 'Profile', 'href' => route('admin.profile'), 'active' => request()->routeIs('admin.profile*'), 'icon' => 'user'],
         ];
 

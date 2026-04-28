@@ -15,6 +15,10 @@ use App\Http\Controllers\Admin\AdminRoomTypeAmenityController;
 use App\Http\Controllers\Admin\AdminRoomTypeRateController;
 use App\Http\Controllers\Admin\AdminCouponController;
 use App\Http\Controllers\Admin\AdminInvoiceController;
+use App\Http\Controllers\Admin\AdminRefundController;
+use App\Http\Controllers\Admin\AdminReviewController;
+use App\Http\Controllers\Admin\AdminJobController;
+use App\Http\Controllers\Admin\AdminJobBatchController;
 use App\Http\Controllers\Admin\AdminBookingGuestController;
 use App\Http\Controllers\Admin\AdminBookingCouponController;
 use App\Http\Controllers\Admin\AdminUserController;
@@ -70,7 +74,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('amenities', AdminAmenityController::class)->except(['show']);
         Route::resource('coupons', AdminCouponController::class)->except(['show']);
         Route::resource('invoices', AdminInvoiceController::class)->except(['show']);
+        Route::resource('refunds', AdminRefundController::class)->except(['show']);
+        Route::resource('reviews', AdminReviewController::class)->except(['show']);
         Route::resource('booking-guests', AdminBookingGuestController::class)->except(['show']);
+        Route::get('jobs', [AdminJobController::class, 'index'])->name('jobs.index');
+        Route::get('job-batches', [AdminJobBatchController::class, 'index'])->name('job-batches.index');
 
         Route::get('room-type-amenities', [AdminRoomTypeAmenityController::class, 'index'])->name('room-type-amenities.index');
         Route::get('room-type-amenities/{room_type}/edit', [AdminRoomTypeAmenityController::class, 'edit'])->name('room-type-amenities.edit');
